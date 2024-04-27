@@ -15,13 +15,10 @@ fprintf('Maximaler Grauwert:')
 disp(maxImg)
 %%-----Aufgabe2-----%
 figure;
-subplot(1,2,1);
+subplot(1,3,1);
 imshow(Img)
 yline(50, 'red');
-subplot(1,2,2);
+subplot(1,3,3);
 imhist(Img,50);
 hold on;
 %%-----Aufgabe3-----%%
-
-
-
