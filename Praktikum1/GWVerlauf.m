@@ -1,18 +1,35 @@
-%%-----GWVerlauf-----%%
-clear;
-clc;
-cols = 256;
-rows = cols;
-GW = zeros(rows,cols);
-%%-----GWVerlauf links n. rechts = 1-----%
-for i=1:cols
-    GW(i,:) = (0:1:255);
+function [] = GWVerlauf(richtung)
+%GWVerlauf Summary of this function goes here
+imgSize = 256;
+img = zeros(imgSize);
+for i=1:imgSize
+    img(i,:) = (0:1:255);
 end
-GW_Verlauf = input('GWVerlauf v. links nach rechts (=1) o. umgekehrt (=2)');
-switch GW_Verlauf
-    case{1}
-        imwrite(uint8(GW), 'BildNew.tif');
-    case{2}
-        GW = flip(GW,2);
-        imwrite(uint8(GW), 'BildNew.tif');
+switch richtung
+    case 'links'
+        imwrite(uint8(img), 'BildNew.tif');
+        subplot(1,2,1);
+        title('Grauwertverlauf--->');
+        imshow(uint8(img));
+        FlipImg = flip(img,2);
+        subplot(1,2,2);
+        title('<---Grauwertverlauf');
+        imshow(uint8(FlipImg));
+        sgtitle('Grauwertverläufe');
+        hold on;
+    case 'rechts'
+        FlipImg = flip(img,2);
+        imwrite(uint8(FlipImg), 'BildNew.tif');
+        subplot(1,2,2);
+        title('<---Grauwertverlauf');
+        imshow(uint8(FlipImg));
+        subplot(1,2,1);
+        title('Grauwertverlauf--->');
+        imshow(uint8(img));
+        sgtitle('Grauwertverläufe');
+        hold on;
+    otherwise
+        error('Falschen Wert übergeben. Entweder links oder rechts')
+end
+%   Detailed explanation goes here
 end

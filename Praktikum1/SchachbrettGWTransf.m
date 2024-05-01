@@ -1,17 +1,18 @@
 %%-----SchachbrettGWTransf-----%%
-clear;
-clc;
+clear; clc;
 %%-----Aufgabe1-----%%
 Img = uint8(imread('Schachbrett.png'));
-figure;
-imhist(Img)
+figure("Name",'Schachbrett.png Ausgangsbild vs. linear transformiert');
+subplot(2,2,1);
+imshow(uint8(Img));
+subplot(2,2,2);
+imhist(uint8(Img));
 %%-----Aufgabe2-----%%
 Img = double(imread('Schachbrett.png'));
 [minImg,maxImg] = bounds(Img,"all");
-Img_Lin_Trans = (255 / (maxImg - minImg)) * (Img - 50);
-figure;
-subplot(1,2,1);
+Img_Lin_Trans = (255 / (maxImg - minImg)) * (Img - minImg);
+subplot(2,2,3);
 imshow(uint8(Img_Lin_Trans));
-subplot(1,2,2);
+subplot(2,2,4);
 imhist(uint8(Img_Lin_Trans));
 hold on;

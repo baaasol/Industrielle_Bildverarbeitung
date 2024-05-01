@@ -15,7 +15,7 @@ disp(minImg)
 fprintf('Maximaler Grauwert:')
 disp(maxImg)
 %%-----Aufgabe2-----%
-figure;
+figure("Name",'Coin');
 subplot(1,3,1);
 imshow(Img)
 yline(50, 'red');
@@ -38,10 +38,10 @@ fprintf('Minimale Differenz:')
 disp(minImg_Diff)
 fprintf('Maximale Differenz:')
 disp(maxImg_Diff)
-figure;
+figure("Name",'Histogramm PNG -> JPG');
 histogram(Img_Diff)
 hold on;
-figure;
+figure("Name",'Differenzbild PNG -> JPG');
 imshow(Img_Diff,[]); 
 colormap(jet); 
 colorbar; 
