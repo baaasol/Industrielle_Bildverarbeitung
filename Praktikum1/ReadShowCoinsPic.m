@@ -1,15 +1,14 @@
 %%-----ReadShowPic-----%%
-clear;
-clc;
-Img = uint8(imread('coinsWM.png'));
+clear; clc;
 %%-----Aufgabe1-----%%
+img = uint8(imread('coinsWM.png'));
 fprintf('Aufgabe 2.1\n')
-[h,b] = size(Img);
+[h,b] = size(img);
 fprintf('Höhe des Bild:')
 disp(h)
 fprintf('Breite des Bild:')
 disp(b)
-[minImg,maxImg] = bounds(Img,"all");
+[minImg,maxImg] = bounds(img,"all");
 fprintf('Minimaler Grauwert:')
 disp(minImg)
 fprintf('Maximaler Grauwert:')
@@ -17,31 +16,32 @@ disp(maxImg)
 %%-----Aufgabe2-----%
 figure("Name",'Coin');
 subplot(1,3,1);
-imshow(Img)
+imshow(img)
 yline(50, 'red');
 subplot(1,3,3);
-imhist(Img,50);
+imhist(img,50);
 hold on;
 %%-----Aufgabe3-----%%
-Img_Neg = 255-Img;
+imgNeg = 255-img;
 subplot(1,3,2);
-imshow(Img_Neg);
+imshow(imgNeg);
 hold on;
 %%-----Aufgabe4-----%%
-imwrite(uint8(Img), 'coins.jpg');
+imwrite(uint8(img), 'coins.jpg');
 %%-----Aufgabe5-----%%
 fprintf('Aufgabe 2.5\n')
-Img_JPG = uint8(imread('coins.jpg'));
-Img_Diff = imabsdiff(Img_JPG,Img);
-[minImg_Diff,maxImg_Diff] = bounds(Img_Diff,"all");
+imgJPG = uint8(imread('coins.jpg'));
+imgDiff = abs(double(img) - double(imgJPG));
+minImgDiff = min(imgDiff(:));
+maxImgDiff = max(imgDiff(:));
 fprintf('Minimale Differenz:')
-disp(minImg_Diff)
+disp(minImgDiff)
 fprintf('Maximale Differenz:')
-disp(maxImg_Diff)
+disp(maxImgDiff)
 figure("Name",'Histogramm PNG -> JPG');
-histogram(Img_Diff)
+histogram(imgDiff, 'BinWidth', 1);
 hold on;
 figure("Name",'Differenzbild PNG -> JPG');
-imshow(Img_Diff,[]); 
+imshow(imgDiff,[]); 
 colormap(jet); 
 colorbar; 
