@@ -1,6 +1,7 @@
+%%-----WMExtract-----%%
 function [] = WMExtract(img)
 figure(1);
-for i=1:8
+for i = 1:8
     subplot(2,4,i);
     bitplane = 256 * bitget(img, i);
     imshow(bitplane);
