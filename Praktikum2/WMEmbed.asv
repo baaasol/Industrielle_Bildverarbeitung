@@ -1,4 +1,0 @@
-function [] = WMEmbed(img, watermark)
-img = bitset(watermark, 1);
-imwrite(img, 'myC')
-end
