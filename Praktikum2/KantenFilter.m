@@ -38,14 +38,18 @@ switch fType
         error('Falschen Wert übergeben. Wert muss zwischen 1 und 3 liegen')
 end
 figure("Name",'Schachbrett.png Ausgangsbild vs. gefiltert');
+%%----------%%
 subplot(1,3,1);
 imshow(uint8(img));
-title('Original');
+title('Original')
+%%----------%%;
 subplot(1,3,2);
 imshow(uint8(imgManualFiltered));
 title('Manuell Gefiltert');
+%%----------%%
 subplot(1,3,3);
 imshow(uint8(imgMatlabFiltered));
 title('Durch Matlab-Funktion gefiltert');
 hold on;
 end
+%%----------%%
